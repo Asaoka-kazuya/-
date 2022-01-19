@@ -14,7 +14,8 @@ class ListsController < ApplicationController
 
      redirect_to list_path(@list.id)
     else
-     render :new
+    @lists = List.all
+     render :index #<= newからindexに変更
     end
   end
 
@@ -40,7 +41,7 @@ class ListsController < ApplicationController
     list = List.find(params[:id])  # データ（レコード）を1件取得
     list.destroy  # データ（レコード）を削除
     redirect_to '/lists'  # 投稿一覧画面へリダイレクト
-  end
+   end
 
   private
   #ストロングパラメーター
